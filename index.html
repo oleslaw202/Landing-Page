@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/POST.css">
+    <link rel="stylesheet" href="styles/default.css">
+</head>
+<body>
+    <audio src="sounds/boot.mp3" id="boot_sound"></audio>
+    <div id="power_button_div" class="power_button_div">
+        <img src="images/start_up/power.png" id="power_button">
+    </div>
+    <div id="POST_screen" class="POST_screen">
+        <header>
+            <img src="POST/logo.png">
+            <h1>NO COPYRIGHT OPERATING SYSTEM</h1>
+            <h1>M5KPL ACPI BIOS REVISION</h1>
+        </header>
+        <main id="POST_main">
+            <p>CPU INTOL (R) MENTION (R) QUADRA CPU E6210 @ 4.20GHz</p>
+            <p>PROCESSOR SPEED : 4200 MHz</p>
+            <p>MEMORY TESTING : OK</p>
+            <p>TOTAL MEMORY : 1024 (DDR1 333)</p>
+            <p>INITIALIZING USB CONTROLLERS : DONE</p>
+            <p>USB DEVICES TOTAL : 1</p>
+            <p>CHECKING FOR ERRORS...</p>
+            <p>DEAD CMOS BATTERY DETECTED : CHANGE REQUIRED</p>
+            <p>PRESS KEYBOARD TO CONTINUE...</p>
+        </main>
+        <footer>
+            <h1>PRESS <b>DEL</b> TO ENTER SETUP</h1>
+            <h1>28/08/2008 03:32:59 F0B-HYL-JS3CLY-1M-F0B-M0BUK-AOPZ</h1>
+        </footer>
+    </div>
+    <script>
+        //========================================
+        // launch up process
+        //========================================
+        const boot_sound = document.getElementById("boot_sound");
+        const powerButton = document.getElementById("power_button");
+        powerButton.addEventListener("mousedown", () => {
+            powerButton.src = "images/start_up/power_clicked.png";
+            if(boot_sound.paused){
+                boot_sound.play();
+                setTimeout(() => {
+                    document.getElementById("power_button_div").style.display = "none";
+                    booted();
+                }, 3450);
+            }
+        });
+        powerButton.addEventListener("mouseup", () => {
+            powerButton.src = "images/start_up/power.png";
+        });
+
+        function booted() {
+            const POST_screen = document.getElementById("POST_screen");
+            POST_screen.style.visibility = "visible";
+            const POSTMain = document.getElementById("POST_main");
+            const MainParagraphs = POSTMain.children;
+            let POSTCounter = 0;
+            function POSTDisplay() {
+                let content = MainParagraphs[POSTCounter].textContent;
+                let contentSplit = content.split(":");
+                MainParagraphs[POSTCounter].textContent = contentSplit[0];
+                MainParagraphs[POSTCounter].style.visibility = "visible";
+                if(contentSplit.length > 1) {
+                    MainParagraphs[POSTCounter].textContent += `:`;
+                    setTimeout(() => {
+                        MainParagraphs[POSTCounter].textContent += contentSplit[1];
+                        POSTCounter++;
+                        if(POSTCounter < MainParagraphs.length){
+                            setTimeout(() => {
+                                POSTDisplay();
+                            }, 500);
+                        }
+                    }, 500);   
+                } else {
+                    POSTCounter++;
+                    if(POSTCounter < MainParagraphs.length) {
+                        setTimeout(() => {
+                            POSTDisplay();
+                        }, 1000);
+                    }
+                }
+            }
+            POSTDisplay();
+        }
+    </script>
+</body>
+<!--
+https://int10h.org/oldschool-pc-fonts/download/
+https://www.youtube.com/watch?v=692Z_adAsMQ
+https://www.deviantart.com/marchmountain/art/Windows-XP-High-Resolution-Icon-Pack-916042853
+-->
+</html>

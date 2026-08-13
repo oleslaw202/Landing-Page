@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "bitmap";
+    src: url("../fonts/bios_font_4.ttf");
+}
+
+body {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow:hidden;
+    font-family: "bitmap";
+}
