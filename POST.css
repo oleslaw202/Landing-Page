@@ -1,0 +1,48 @@
+.power_button_div {
+    position: absolute;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}
+
+.power_button_div img {
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    width: 25%;
+}
+
+.POST_screen {
+    width: 100%;
+    height: 1000px;
+    color: white;
+    visibility: hidden;
+    user-select: none;
+}
+
+.POST_screen header {
+    position: relative;
+}
+
+.POST_screen header img{
+    float: left;
+}
+
+.POST_screen header h1{
+    margin: 0;
+    padding-top: 10px;
+}
+
+.POST_screen main {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.POST_screen main p {
+    visibility: hidden; 
+}
+
+.POST_screen footer {
+    position: absolute;
+    bottom: 0;
+}
