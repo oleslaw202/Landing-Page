@@ -3,6 +3,7 @@
     left: 50%;
     top: 50vh;
     transform: translate(-50%, -50%);
+    user-select: none;
 }
 
 .power_button_div img {
@@ -16,6 +17,7 @@
     height: 1000px;
     color: white;
     visibility: hidden;
+    user-select: none;
 }
 
 .POST_screen header {
@@ -37,7 +39,7 @@
 }
 
 .POST_screen main p {
-    visibility: hidden;
+    visibility: hidden; 
 }
 
 .POST_screen footer {
