@@ -1,0 +1,82 @@
+@font-face {
+    font-family: "bitmap";
+    src: url("../fonts/bios_font_4.ttf");
+}
+
+body {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow:hidden;
+    font-family: "bitmap";
+}
+
+img {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+input[type=range][orient=vertical] {
+    writing-mode: vertical-lr;
+    direction: rtl;
+    appearance: slider-vertical;
+    width: 16px;
+    vertical-align: bottom;
+}
+
+input[type=range] {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    accent-color: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range][orient=vertical]::-webkit-slider-runnable-track {
+    background-color: gray;
+    height: 100%;
+    width: 1px;
+}
+
+input[type=range][orient=vertical]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: #bfbfbf;
+    width: 17px;
+    height: 7.5px;
+    border: 2px solid black;
+    border-color: white gray black white;
+    border-radius: 0;
+    margin-left: -6.55px;
+}
+
+input[type=range][orient=vertical]::-moz-range-track {
+    background-color: gray;
+    height: 100%;
+    width: 1px;
+}
+
+input[type=range][orient=vertical]::-moz-range-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: #bfbfbf;
+    width: 17px;
+    height: 7.5px;
+    border: 2px solid black;
+    border-color: white gray black white;
+    border-radius: 0;
+}
