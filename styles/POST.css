@@ -1,3 +1,8 @@
+* {
+    user-select: none;
+    font-family: "bitmap";
+}
+
 .sound_volume_panel {
     position: absolute;
     width: 100px;
@@ -83,4 +88,33 @@
 .POST_screen footer {
     position: absolute;
     bottom: 0;
+}
+
+.OS_loading_screen {
+    position: relative;
+    margin: auto;
+    margin-top: 25vh;
+    width: 800px;
+    height: 500px;
+}
+
+.title_logo_div {
+    position: relative;
+    width: 100%
+}
+
+.title_logo_div img {
+    display: block;
+    margin: auto;
+    padding-left: 30px;
+    width: 500px;
+    height: 100%;
+}
+
+.loading {
+    text-align: center;
+    margin: auto;
+    margin-top: 300px;
+    width: 500px;
+    height: 75px;
 }

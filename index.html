@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/POST.css">
     <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/POST.css">
 </head>
 <body>
     <audio src="sounds/boot.mp3" id="boot_sound"></audio>
@@ -40,23 +40,15 @@
             <h1>28/08/2008 03:32:59 F0B-HYL-JS3CLY-1M-F0B-M0BUK-AOPZ</h1>
         </footer>
     </div>
+    <div id="OS_loading_screen" class="OS_loading_screen" hidden>
+        <div id="title_logo_div" class="title_logo_div">
+            <img id="title_logo" class="title_logo" src="images/main_icons/passat_os_logo_big.png">
+        </div>
+        <p class="loading"></p>
+    </div>
+    <script src="scripts/loading.js"></script>
+    <script src="scripts/volume.js"></script>
     <script>
-        //========================================
-        // Volume
-        //========================================
-        const volumeIcon = document.getElementById("volume_icon");
-        const volumeRangePanel = document.getElementById("volume_range_panel");
-        const volumeRange = document.getElementById("volume_range");
-        const audioFiles = document.querySelectorAll("audio");
-        volumeIcon.addEventListener("mouseup", () => {
-            volumeRangePanel.toggleAttribute("hidden");
-        })
-
-        function volumeChange(value) {
-            audioFiles.forEach(audioFile => {
-                audioFile.volume = value;
-            });
-        }
         //========================================
         // launch up process
         //========================================
@@ -77,8 +69,9 @@
         });
 
         function booted() {
-            const POST_screen = document.getElementById("POST_screen");
-            POST_screen.style.visibility = "visible";
+            const OSLoadingScreen = document.getElementById("OS_loading_screen");
+            const POSTscreen = document.getElementById("POST_screen");
+            POSTscreen.style.visibility = "visible";
             const POSTMain = document.getElementById("POST_main");
             const MainParagraphs = POSTMain.children;
             let POSTCounter = 0;
@@ -106,9 +99,22 @@
                         }, 1000);
                     }
                 }
+                if(POSTCounter >= MainParagraphs.length) {
+                    window.addEventListener("keypress", (key) => {
+                        if(key.charCode === 13) {
+                            POSTscreen.hidden = true;
+                            OSLoadingScreen.hidden = false;
+                            setTimeout(() => {
+                                window.location.href = "os.html";
+                            }, 5000)
+                        }
+                    })
+                }
             }
             POSTDisplay();
         }
+
+
     </script>
 </body>
 <!--
